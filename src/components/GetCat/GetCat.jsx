@@ -4,7 +4,6 @@ import './GetCat.scss'
 export function GetCat(props) {
     const [isEnabled, setIsEnabled] = React.useState(true);
     const [isRefreshing, setIsRefreshing] = React.useState(false);
-    const [timerId, setTimer] = React.useState();
     const onCheckBoxUpdating = (checkBoxType = 'enabled') => {
         if (checkBoxType === 'enabled') {
             setIsEnabled(c => !c);
