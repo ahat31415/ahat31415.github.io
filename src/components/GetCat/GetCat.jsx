@@ -15,7 +15,7 @@ export function GetCat(props) {
     useEffect(() => {
         let timer;
         if (isRefreshing && isEnabled) {
-            timer = setInterval(() => props.catFetcher(), 1000);
+            timer = setInterval(() => props.catFetcher(), 5000);
         }
         return () => {
             clearInterval(timer);
