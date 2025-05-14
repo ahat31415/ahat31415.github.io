@@ -3,7 +3,8 @@ import './GetCat.scss'
 
 export function GetCat(props) {
     const [isEnabled, setIsEnabled] = React.useState(true);
-    const [isRefreshing, setIsRefreshing] = React.useState(false);
+    const [isRefreshing, setIsRefreshing] = props.refreshing;
+
     const onCheckBoxUpdating = (checkBoxType = 'enabled') => {
         if (checkBoxType === 'enabled') {
             setIsEnabled(c => !c);
@@ -13,13 +14,13 @@ export function GetCat(props) {
     }
     useEffect(() => {
         let timer;
-        if (isRefreshing) {
-            timer = setInterval(() => props.catFetcher(), 5000);
+        if (isRefreshing && isEnabled) {
+            timer = setInterval(() => props.catFetcher(), 1000);
         }
         return () => {
             clearInterval(timer);
         }
-    }, [isRefreshing]);
+    }, [isRefreshing, isEnabled]);
     return (
         <div className="ManagingBox">
             <div>
